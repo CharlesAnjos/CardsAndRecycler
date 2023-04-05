@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,6 +42,14 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.ViewHolder
         Pessoa model = pessoaArrayList.get(position);
         holder.nome_pessoa.setText(model.getNome());
         holder.idade_pessoa.setText(String.format("%d", model.getIdade()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(),model.getResumo(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
