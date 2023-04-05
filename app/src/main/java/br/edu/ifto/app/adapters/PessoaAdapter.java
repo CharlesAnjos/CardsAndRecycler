@@ -59,6 +59,7 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.ViewHolder
         botaoExcluir.setOnClickListener(view -> {
             pessoaArrayList.remove(position);
             notifyItemRemoved(position);
+            notifyItemRangeChanged(position, pessoaArrayList.size());
         });
     }
 
