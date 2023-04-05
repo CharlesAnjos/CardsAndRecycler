@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">App</string>
+    <string name="nome_pessoa">Nome da Pessoa</string>
+    <string name="idade_pessoa">Idade da Pessoa</string>
+    <string name="label_nome">Nome:</string>
+    <string name="label_idade">Idade:</string>
+    <string name="label_deletebutton">Excluir</string>
+</resources>
