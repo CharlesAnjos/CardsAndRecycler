@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,18 +42,23 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.ViewHolder
     public void onBindViewHolder(PessoaAdapter.ViewHolder holder,
                                  int position) {
         // to set data to textview and imageview of each card layout
-        Pessoa model = pessoaArrayList.get(position);
-        holder.nome_pessoa.setText(model.getNome());
-        holder.idade_pessoa.setText(String.format("%d", model.getIdade()));
+        Pessoa pessoa = pessoaArrayList.get(position);
+        holder.nome_pessoa.setText(pessoa.getNome());
+        holder.idade_pessoa.setText(String.format("%d", pessoa.getIdade()));
 
         holder.itemView.setOnClickListener(view -> {
             AlertDialog dialog =
                     new AlertDialog.Builder(view.getContext()).create();
-            dialog.setTitle("Resumo: " + model.getNome());
-            dialog.setMessage(model.getResumo());
+            dialog.setTitle("Resumo: " + pessoa.getNome());
+            dialog.setMessage(pessoa.getResumo());
             dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ok", (dialog1, which) -> {
             });
             dialog.show();
+        });
+        Button botaoExcluir  = holder.itemView.findViewById(R.id.botao_excluir);
+        botaoExcluir.setOnClickListener(view -> {
+            pessoaArrayList.remove(position);
+            notifyItemRemoved(position);
         });
     }
 

@@ -46,12 +46,12 @@
             android:layout_marginTop="20dp"
             android:text="@string/label_idade"
             android:textColor="@color/black"
-            android:textSize="10sp"/>
+            android:textSize="11sp"/>
 
         <TextView
             android:id="@+id/idade_pessoa"
             android:layout_width="match_parent"
-            android:layout_toRightOf="@id/label_idade"
+            android:layout_toEndOf="@id/label_idade"
             android:layout_below="@id/nome_pessoa"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -63,6 +63,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/botao_excluir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/idade_pessoa"
