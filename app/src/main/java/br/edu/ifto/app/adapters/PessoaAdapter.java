@@ -1,7 +1,9 @@
 package br.edu.ifto.app.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,8 +48,16 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),model.getResumo(),
-                        Toast.LENGTH_SHORT).show();
+                AlertDialog dialog =
+                        new AlertDialog.Builder(view.getContext()).create();
+                dialog.setTitle("Resumo: " + model.getNome());
+                dialog.setMessage(model.getResumo());
+                dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ok", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                dialog.show();
             }
         });
     }
