@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         RecyclerView pessoas = findViewById(R.id.pessoasRecycler);
 
-        ArrayList<Pessoa> pessoaArrayList = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> pessoaArrayList = new ArrayList<>();
         pessoaArrayList.add(new Pessoa("Charles Albert", 37, "Aluno"));
         pessoaArrayList.add(new Pessoa("Fulano", 20, "Professor"));
         pessoaArrayList.add(new Pessoa("Beltrano", 45, "Secretario"));
         pessoaArrayList.add(new Pessoa("Fulana", 30, "Professora"));
 
-        PessoaAdapter pessoaAdapter = new PessoaAdapter(this, pessoaArrayList);
+        PessoaAdapter pessoaAdapter = new PessoaAdapter(pessoaArrayList);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 

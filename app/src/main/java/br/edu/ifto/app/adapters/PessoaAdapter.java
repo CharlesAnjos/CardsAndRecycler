@@ -2,14 +2,13 @@ package br.edu.ifto.app.adapters;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -19,17 +18,17 @@ import br.edu.ifto.app.entidades.Pessoa;
 
 public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.ViewHolder> {
 
-    private final Context context;
     private final ArrayList<Pessoa> pessoaArrayList;
 
     // Constructor
-    public PessoaAdapter(Context context, ArrayList<Pessoa> pessoaArrayList) {
-        this.context = context;
+    public PessoaAdapter(ArrayList<Pessoa> pessoaArrayList) {
         this.pessoaArrayList = pessoaArrayList;
     }
 
     @Override
-    public PessoaAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public PessoaAdapter.ViewHolder onCreateViewHolder( ViewGroup parent,
+                                                       int viewType) {
         // to inflate the layout for each item of recycler view.
         View view =
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.pessoa_card_layout, parent, false);
@@ -45,20 +44,14 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.ViewHolder
         holder.nome_pessoa.setText(model.getNome());
         holder.idade_pessoa.setText(String.format("%d", model.getIdade()));
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog dialog =
-                        new AlertDialog.Builder(view.getContext()).create();
-                dialog.setTitle("Resumo: " + model.getNome());
-                dialog.setMessage(model.getResumo());
-                dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ok", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-                dialog.show();
-            }
+        holder.itemView.setOnClickListener(view -> {
+            AlertDialog dialog =
+                    new AlertDialog.Builder(view.getContext()).create();
+            dialog.setTitle("Resumo: " + model.getNome());
+            dialog.setMessage(model.getResumo());
+            dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ok", (dialog1, which) -> {
+            });
+            dialog.show();
         });
     }
 
